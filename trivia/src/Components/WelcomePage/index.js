@@ -9,7 +9,7 @@ function WelcomeDisplay(){
 
     const[difficulty, setDifficulty]= useState("");
     const[genre, setGenre]= useState("");
-    // const[]
+    const[playerName, setPlayerName] = useState("bob");
     
     function handleDifficulty(diffText){
         setDifficulty(diffText);
@@ -21,14 +21,26 @@ function WelcomeDisplay(){
         console.log(genre);
     }
 
-    // function handlePlayerName()
+    function handleSubmit(e){
+        setPlayerName(e.target[0].value)
+        console.log(e)
+        e.preventDefault();
+    }
     
 return(
     <div>
 <div className="difficulty_buttons">
-<input className="Player_Name" defaultValue="Enter Player Name Here..." ></input>
+<form onSubmit={handleSubmit}>
+    <input  
+    className="Player_Name" 
+    placeholder="Enter Player Name Here..." 
+    // onChange={(e)=>setPlayerName(e.target.value)}
+    ></input>
+    {/* <button type="submit" onClick={handleSubmit}></button> */}
+</form>
 <h1>Difficulty: {difficulty}</h1>
 <h2>Genre Chosen: {genre}</h2>
+<h2>Playen Name: {playerName}</h2>
 <button onClick={()=>handleDifficulty('Easy')}>easy</button>
 <button onClick={()=>handleDifficulty('Medium')}>medium</button>
 <button onClick={()=>handleDifficulty('Hard')}>hard</button>
