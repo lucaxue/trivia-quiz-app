@@ -16,16 +16,18 @@ function DisplayAnswers({
   //if index is random number
   //dispatch to up the score
   const [isCorrect, setIsCorrect] = useState('grey');
+
   function updateScore(i) {
     if (i === randomNum) {
       dispatch({ type: 'SCORE', payload: 10 });
       setIsCorrect('green');
-      console.log('correct!');
     } else {
       setIsCorrect('red');
-      console.log('no!');
     }
-    setTimeout(nextQuestion, 2000);
+    setTimeout(() => {
+      nextQuestion();
+      setIsCorrect('grey');
+    }, 2000);
   }
   return (
     <div>

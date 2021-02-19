@@ -2,31 +2,11 @@ import WelcomeDisplay from '../WelcomePage';
 import './index.css';
 import DisplayQuestion from '../DisplayQuestion';
 import { useReducer, useState } from 'react';
-// states
-// visibility of pages
-// genre
-// difficulty
-// player Name
-
-//functions to manipulate WelcomePage
-//handleGenre
-//handleDifficulty
-//handleName
-//handleVisibility
-
-//props to pass down
-// visibility component to both WelcomePage and DisplayQuestions
-// handleVisibility to both componentns
-// handleGenre & handleDifficulty & handleName to Welcome page onlt
-// Pass all states to DisplayQuestion
-
-// return
-// App has 2 components - DisplayQuestions and WelcomePage
 
 let initialState = {
-  genre: 27,
-  difficulty: 'medium',
-  playerName: 'Bob',
+  genre: '',
+  difficulty: '',
+  playerName: '',
   score: 0,
 };
 
@@ -45,7 +25,6 @@ function reducer(state, action) {
       if (state.difficulty === 'medium') {
         action.payload *= 2;
       }
-
       return { ...state, score: state.score + action.payload };
     default:
       return state;
@@ -76,7 +55,6 @@ function App() {
         isVisible={isWelcomePage}
         handleVisibility={handleVisibility}
       />
-      
     </div>
   );
 }

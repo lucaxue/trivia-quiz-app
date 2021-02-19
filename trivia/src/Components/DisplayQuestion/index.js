@@ -29,15 +29,11 @@ function DisplayQuestion({ state, dispatch, isNotVisible, handleVisibility }) {
       questionsDispatch({ type: 'GET_QUESTIONS', payload: data.results });
     }
     getQuestions();
-  }, []);
+  }, [isNotVisible]);
 
   //   console.log(
   //     `${URL}&category=${state.genre}&difficulty=${state.difficulty}&type=multiple`
   //   );
-
-  //array of 10 questions
-  console.log(questions);
-  //question, correct_answer, incorrect_answers
 
   // create a state for question number
   // which increments by 1
@@ -48,14 +44,14 @@ function DisplayQuestion({ state, dispatch, isNotVisible, handleVisibility }) {
     return <p>Loading...</p>;
   }
   return (
-    <div className={isNotVisible?'false':'true'}>
+    <div className={isNotVisible ? 'false' : 'true'}>
       <p>{questions[qNumber].question}</p>
       <DisplayAnswers
         state={state}
         dispatch={dispatch}
         correctAnswer={questions[qNumber].correct_answer}
         incorrectAnswers={questions[qNumber].incorrect_answers}
-        nextQuestion={() => setQNumber(Math.min(9,qNumber+1))}
+        nextQuestion={() => setQNumber(Math.min(9, qNumber + 1))}
       />
       <p>{`Score is ${state.score}`}</p>
     </div>
