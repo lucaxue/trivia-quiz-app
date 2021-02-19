@@ -9,6 +9,7 @@ function WelcomeDisplay({ state, dispatch, isVisible }) {
         console.log(e);
         e.preventDefault();
     }
+
     return (
         <div className={`${isVisible}`}>
             <div className="difficulty_buttons">
