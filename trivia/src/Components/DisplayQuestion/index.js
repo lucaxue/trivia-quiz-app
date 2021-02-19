@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 const URL = 'https://opentdb.com/api.php?amount=10';
 //&category=27&difficulty=easy&type=multiple
@@ -38,8 +38,19 @@ function DisplayQuestion({
   //array of 10 questions
   console.log(questions);
   //question, correct_answer, incorrect_answers
+  if (!questions) {
+    return (<p>Loading...</p>)
+  }
+// create a state for question number
+// which increments by 1
+// when the "NEXT QUESTION" button is clicked
+  // const [qNumber, setQNumber] = useState(0);
 
-  return <p></p>;
+  return (
+    <div>
+      {questions.map((question)=><p>{question.question}</p>)}
+    </div>
+  )
 }
 
 export default DisplayQuestion;
