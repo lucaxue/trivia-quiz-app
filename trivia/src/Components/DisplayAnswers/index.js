@@ -15,28 +15,33 @@ function DisplayAnswers({
   //handleclick takes index
   //if index is random number
   //dispatch to up the score
-  const [isCorrect, setIsCorrect] = useState('grey');
 
-  function updateScore(i) {
+  const [isClicked, setIsClicked] = useState(false);
+
+  function updateScore(button, i) {
+    setIsClicked(true);
     if (i === randomNum) {
       dispatch({ type: 'SCORE', payload: 10 });
-      setIsCorrect('green');
+      button.className = 'correct';
     } else {
-      setIsCorrect('red');
+      button.className = 'wrong';
     }
     setTimeout(() => {
+      setIsClicked(false);
       nextQuestion();
-      setIsCorrect('grey');
+      button.className = 'neutral';
     }, 2000);
   }
+
   return (
     <div>
       {/* map buttons hand in handleclick*/}
       {answers.map((answer, index) => (
         <button
-          className={isCorrect.toString()}
-          onClick={() => {
-            updateScore(index);
+          className={'neutral'}
+          disabled={isClicked}
+          onClick={(e) => {
+            updateScore(e.target, index);
           }}
         >
           {answer}

@@ -12,7 +12,7 @@ function WelcomeDisplay({ state, dispatch, isVisible, handleVisibility }) {
   }
 
   return (
-    <div className={isVisible ? 'true' : 'false'}>
+    <div className={isVisible ? 'visible' : 'invisible'}>
       <form onSubmit={handleSubmit}>
         <input
           className="Player_Name"
@@ -21,7 +21,6 @@ function WelcomeDisplay({ state, dispatch, isVisible, handleVisibility }) {
         ></input>
         {/* <button type="submit" onClick={handleSubmit}></button> */}
       </form>
-
       <DifficultyButtons dispatch={dispatch} />
       <GenreButtons dispatch={dispatch} />
       <button className="start_button" onClick={handleVisibility}>

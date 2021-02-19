@@ -1,57 +1,34 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useState } from 'react';
+import useFetch from '../Hooks/useFetch';
 import DisplayAnswers from '../DisplayAnswers';
 
-const URL = 'https://opentdb.com/api.php?amount=10';
+const REACT_APP_API_URL = 'https://opentdb.com/api.php?amount=10';
 //&category=27&difficulty=easy&type=multiple
 
-//reducer, takes state and action
-//accept GET_QUESTIONS only
-//payload is the data
-function reducer(state, action) {
-  switch (action.type) {
-    case 'GET_QUESTIONS':
-      return action.payload;
-    default:
-      return state;
-  }
-}
-
 function DisplayQuestion({ state, dispatch, isNotVisible, handleVisibility }) {
-  const [questions, questionsDispatch] = useReducer(reducer, null);
+  let { results: questions } = useFetch(
+    `${REACT_APP_API_URL}&category=${state.genre}&difficulty=${state.difficulty}&type=multiple`,
+    isNotVisible
+  ) ?? { results: '' };
 
-  //fetch api with useEffect, depending on visibility
-  useEffect(() => {
-    async function getQuestions() {
-      let res = await fetch(
-        `${URL}&category=${state.genre}&difficulty=${state.difficulty}&type=multiple`
-      );
-      let data = await res.json();
-      questionsDispatch({ type: 'GET_QUESTIONS', payload: data.results });
-    }
-    getQuestions();
-  }, [isNotVisible]);
-
-  //   console.log(
-  //     `${URL}&category=${state.genre}&difficulty=${state.difficulty}&type=multiple`
-  //   );
+  //   console.log(`${URL}&category=${state.genre}&difficulty=${state.difficulty}&type=multiple`);
 
   // create a state for question number
-  // which increments by 1
-  // when the "NEXT QUESTION" button is clicked
-  const [qNumber, setQNumber] = useState(0);
+  const [qNum, setQNum] = useState(0);
 
   if (!questions) {
-    return <p>Loading...</p>;
+    return <div className={'invisible'}></div>;
   }
+
   return (
-    <div className={isNotVisible ? 'false' : 'true'}>
-      <p>{questions[qNumber].question}</p>
+    <div className={isNotVisible ? 'invisible' : 'visible'}>
+      <p>{`${qNum + 1}. ${questions[qNum].question}`}</p>
       <DisplayAnswers
         state={state}
         dispatch={dispatch}
-        correctAnswer={questions[qNumber].correct_answer}
-        incorrectAnswers={questions[qNumber].incorrect_answers}
-        nextQuestion={() => setQNumber(Math.min(9, qNumber + 1))}
+        correctAnswer={questions[qNum].correct_answer}
+        incorrectAnswers={questions[qNum].incorrect_answers}
+        nextQuestion={() => setQNum(Math.min(9, qNum + 1))}
       />
       <p>{`Score is ${state.score}`}</p>
     </div>

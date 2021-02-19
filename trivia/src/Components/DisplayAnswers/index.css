@@ -1,7 +1,7 @@
-.green {
+.correct {
   background-color: rgb(118, 218, 118);
 }
 
-.red {
+.wrong {
   background-color: rgb(228, 123, 123);
 }
