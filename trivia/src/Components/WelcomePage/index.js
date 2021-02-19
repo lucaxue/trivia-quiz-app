@@ -1,22 +1,48 @@
 import React, {useState} from 'react'; 
 
 // state difficulty , genre, number of questions, player name
+// Display box for chosen Diff and Genre 
 
-const[difficulty, setDifficulty]= useState("");
-
-function handleDifficulty(innnerText){
-    setDifficulty(innerText);
-}
 
 function WelcomeDisplay(){
 
+    const[difficulty, setDifficulty]= useState("");
+    const[genre, setGenre]= useState("");
+    // const[]
+    
+    function handleDifficulty(diffText){
+        setDifficulty(diffText);
+        console.log(difficulty);
+    }
+    
+    function handleGenre(genreText){
+        setGenre(genreText);
+        console.log(genre);
+    }
+
+    // function handlePlayerName()
+    
 return(
-<div>
-<button onClick={()=>handleDifficulty('easy')}>easy</button>
-<button onClick={()=>handleDifficulty('medium')}>medium</button>
-<button onClick={()=>handleDifficulty('hard')}>hard</button>
+    <div>
+<div className="difficulty_buttons">
+<input className="Player_Name" defaultValue="Enter Player Name Here..." ></input>
+<h1>Difficulty: {difficulty}</h1>
+<h2>Genre Chosen: {genre}</h2>
+<button onClick={()=>handleDifficulty('Easy')}>easy</button>
+<button onClick={()=>handleDifficulty('Medium')}>medium</button>
+<button onClick={()=>handleDifficulty('Hard')}>hard</button>
+    </div>
+
+<div className="genre_buttons">
+<button onClick={()=>handleGenre('Art')}>Art</button>
+<button onClick={()=>handleGenre('Politics')}>Politics</button>
+<button onClick={()=>handleGenre('History')}>History</button>
+    </div>
+
+
 
     </div>
+
 
 )
 

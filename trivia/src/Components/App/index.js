@@ -1,3 +1,4 @@
+import WelcomeDisplay from '../WelcomePage';
 import './index.css';
 
 
@@ -27,6 +28,7 @@ function App() {
   return (
     <div className="App">
    <h1>Hello World!</h1>
+   <WelcomeDisplay/>
     </div>
   );
 }
