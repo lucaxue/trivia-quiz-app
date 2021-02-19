@@ -24,8 +24,8 @@ import { useReducer, useState } from 'react';
 // App has 2 components - DisplayQuestions and WelcomePage
 
 let initialState = {
-  genre: '',
-  difficulty: '',
+  genre: 27,
+  difficulty: 'medium',
   playerName: 'Bob',
   score: 0,
 };
@@ -41,7 +41,8 @@ function reducer(state, action) {
     case 'SCORE':
       if (state.difficulty === 'hard') {
         action.payload *= 3;
-      } else if (state.difficulty === 'easy') {
+      }
+      if (state.difficulty === 'medium') {
         action.payload *= 2;
       }
 

@@ -29,16 +29,16 @@ function DisplayQuestion({ state, dispatch, isNotVisible, handleVisibility }) {
       questionsDispatch({ type: 'GET_QUESTIONS', payload: data.results });
     }
     getQuestions();
-  }, [state]);
-  
-  console.log(
-    `${URL}&category=${state.genre}&difficulty=${state.difficulty}&type=multiple`
-  );
-  
+  }, []);
+
+  //   console.log(
+  //     `${URL}&category=${state.genre}&difficulty=${state.difficulty}&type=multiple`
+  //   );
+
   //array of 10 questions
   console.log(questions);
   //question, correct_answer, incorrect_answers
-  
+
   // create a state for question number
   // which increments by 1
   // when the "NEXT QUESTION" button is clicked
@@ -49,10 +49,15 @@ function DisplayQuestion({ state, dispatch, isNotVisible, handleVisibility }) {
   }
   return (
     <div>
-        <p>{questions[qNumber].question}</p>
-        {/* <DisplayAnswers state = {state} dispatch = {dispatch} correctAnswer = {questions[qNumber].correct_answer} incorrectAnswers = {questions[qNumber].incorrect_answers} /> */}
-        <button onClick={()=>setQNumber(qNumber+1)}>Next Question</button>
-        <p>{`Score is ${state.score}`}</p>
+      <p>{questions[qNumber].question}</p>
+      <DisplayAnswers
+        state={state}
+        dispatch={dispatch}
+        correctAnswer={questions[qNumber].correct_answer}
+        incorrectAnswers={questions[qNumber].incorrect_answers}
+        nextQuestion={() => setQNumber(qNumber + 1)}
+      />
+      <p>{`Score is ${state.score}`}</p>
     </div>
   );
 }
