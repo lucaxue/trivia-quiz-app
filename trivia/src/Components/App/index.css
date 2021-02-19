@@ -36,5 +36,6 @@
     transform: rotate(360deg);
   }
 }
+
 .true{  display: block}
 .false{ display: none}

@@ -62,7 +62,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <h1>Trivia Quiz</h1>
+      <h2>Player Name: {state.playerName}</h2>
       <DisplayQuestion
         state={state}
         dispatch={dispatch}
@@ -75,7 +76,7 @@ function App() {
         isVisible={isWelcomePage}
         handleVisibility={handleVisibility}
       />
-      <button onClick={handleVisibility}>Change Page</button>
+      
     </div>
   );
 }

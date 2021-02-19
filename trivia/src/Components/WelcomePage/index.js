@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // state difficulty , genre, number of questions, player name
 // Display box for chosen Diff and Genre
 
-function WelcomeDisplay({ state, dispatch, isVisible }) {
+function WelcomeDisplay({ state, dispatch, isVisible, handleVisibility }) {
     function handleSubmit(e) {
         dispatch({ type: 'PLAYER_NAME', payload: e.target[0].value });
         console.log(e);
@@ -11,7 +11,7 @@ function WelcomeDisplay({ state, dispatch, isVisible }) {
     }
 
     return (
-        <div className={`${isVisible}`}>
+        <div className={isVisible?'true':'false'}>
             <div className="difficulty_buttons">
                 <form onSubmit={handleSubmit}>
                     <input
@@ -23,7 +23,7 @@ function WelcomeDisplay({ state, dispatch, isVisible }) {
                 </form>
                 {/* <h1>Difficulty: {state.difficulty}</h1> */}
                 {/* <h2>Genre Chosen: {state.genre}</h2> */}
-                <h2>Player Name: {state.playerName}</h2>
+             
                 <button onClick={() => dispatch({ type: 'DIFFICULTY', payload: 'easy' })}>Easy</button>
                 <button onClick={() => dispatch({ type: 'DIFFICULTY', payload: 'medium' })}>Medium</button>
                 <button onClick={() => dispatch({ type: 'DIFFICULTY', payload: 'hard' })}>Hard</button>
@@ -43,7 +43,8 @@ function WelcomeDisplay({ state, dispatch, isVisible }) {
 
             </div>
 
-            
+            <button className = "start_button" onClick={handleVisibility}>Start Quiz</button>
+
         </div>
     );
 }

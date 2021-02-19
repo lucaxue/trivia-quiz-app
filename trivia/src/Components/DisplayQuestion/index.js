@@ -48,14 +48,14 @@ function DisplayQuestion({ state, dispatch, isNotVisible, handleVisibility }) {
     return <p>Loading...</p>;
   }
   return (
-    <div>
+    <div className={isNotVisible?'false':'true'}>
       <p>{questions[qNumber].question}</p>
       <DisplayAnswers
         state={state}
         dispatch={dispatch}
         correctAnswer={questions[qNumber].correct_answer}
         incorrectAnswers={questions[qNumber].incorrect_answers}
-        nextQuestion={() => setQNumber(qNumber + 1)}
+        nextQuestion={() => setQNumber(Math.min(9,qNumber+1))}
       />
       <p>{`Score is ${state.score}`}</p>
     </div>
