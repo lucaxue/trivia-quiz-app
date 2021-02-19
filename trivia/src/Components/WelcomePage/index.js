@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react'; 
 
 // state difficulty , genre, number of questions, player name
@@ -51,3 +52,13 @@ return(
 
 export default WelcomeDisplay;
 //functions handle
+
+//props to take:
+    //handle(functions)
+    //difficulty/genre/name/ states
+
+//returns
+    //DifficultyButtons 
+    //GenreButtons
+    //input field
+
