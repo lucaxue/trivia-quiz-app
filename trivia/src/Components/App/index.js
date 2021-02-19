@@ -74,6 +74,7 @@ function App() {
         isVisible={isWelcomePage}
         handleVisibility={handleVisibility}
       />
+      <button onClick={handleVisibility}>Change Page</button>
     </div>
   );
 }
