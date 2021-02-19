@@ -15,42 +15,43 @@ function reducer(state, action) {
   }
 }
 
-function DisplayQuestion({
-  genre = 27,
-  difficulty = 'easy',
-  playerName = 'Bob',
-  visibility = true,
-}) {
+function DisplayQuestion({ state, isNotVisible }) {
   const [questions, dispatch] = useReducer(reducer, null);
 
   //fetch api with useEffect, depending on visibility
   useEffect(() => {
     async function getQuestions() {
       let res = await fetch(
-        `${URL}&category=${genre}&difficulty=${difficulty}&type=multiple`
+        `${URL}&category=${state.genre}&difficulty=${state.difficulty}&type=multiple`
       );
       let data = await res.json();
       dispatch({ type: 'GET_QUESTIONS', payload: data.results });
     }
     getQuestions();
-  }, [visibility]);
+  }, [state]);
+
+  console.log(
+    `${URL}&category=${state.genre}&difficulty=${state.difficulty}&type=multiple`
+  );
 
   //array of 10 questions
   console.log(questions);
   //question, correct_answer, incorrect_answers
   if (!questions) {
-    return (<p>Loading...</p>)
+    return <p>Loading...</p>;
   }
-// create a state for question number
-// which increments by 1
-// when the "NEXT QUESTION" button is clicked
+  // create a state for question number
+  // which increments by 1
+  // when the "NEXT QUESTION" button is clicked
   // const [qNumber, setQNumber] = useState(0);
 
   return (
     <div>
-      {questions.map((question)=><p>{question.question}</p>)}
+      {questions.map((question) => (
+        <p>{question.question}</p>
+      ))}
     </div>
-  )
+  );
 }
 
 export default DisplayQuestion;
