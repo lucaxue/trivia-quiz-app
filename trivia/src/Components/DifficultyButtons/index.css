@@ -1,0 +1,26 @@
+.difficulty-buttons button {
+  padding: 1rem 1.5rem;
+  font-family: 'Roboto Mono';
+  margin: 0px 2px;
+  width: 30%;
+}
+
+#easy-button:focus {
+  border-style: solid;
+  background-color: rgb(173, 218, 177);
+}
+#medium-button:focus {
+  border-style: solid;
+  background-color: rgb(173, 193, 218);
+}
+#hard-button:focus {
+  border-style: solid;
+  background-color: rgb(247, 188, 188);
+}
+
+.difficulty-buttons {
+  margin: 20px 33%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

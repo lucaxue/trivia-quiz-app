@@ -6,7 +6,7 @@ import { useReducer, useState } from 'react';
 let initialState = {
   genre: '',
   difficulty: '',
-  playerName: '',
+  playerName: 'Guest',
   score: 0,
 };
 

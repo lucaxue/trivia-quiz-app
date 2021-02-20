@@ -1,7 +1,25 @@
 .correct {
-  background-color: rgb(118, 218, 118);
+  background-color: rgb(193, 235, 193);
 }
 
 .wrong {
-  background-color: rgb(228, 123, 123);
+  background-color: rgb(240, 194, 194);
+}
+
+.answer-buttons button {
+  padding: 1rem 1.5rem;
+  font-family: 'Roboto Mono';
+  margin: 0px 2px;
+  width: 20%;
+}
+
+.answer-buttons button:hover:enabled {
+  background-color: rgb(219, 250, 247);
+}
+
+.answer-buttons {
+  margin: 20px 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

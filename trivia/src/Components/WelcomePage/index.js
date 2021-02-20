@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './index.css';
 import GenreButtons from '../GenreButtons';
 import DifficultyButtons from '../DifficultyButtons';
 
@@ -12,18 +13,18 @@ function WelcomeDisplay({ state, dispatch, isVisible, handleVisibility }) {
   }
 
   return (
-    <div className={isVisible ? 'visible' : 'invisible'}>
+    <div id="welcome-page" className={isVisible ? 'visible' : 'invisible'}>
       <form onSubmit={handleSubmit}>
         <input
           className="Player_Name"
-          placeholder="Enter Player Name Here..."
+          placeholder="Enter Name Here..."
           // onChange={(e)=>setPlayerName(e.target.value)}
         ></input>
         {/* <button type="submit" onClick={handleSubmit}></button> */}
       </form>
       <DifficultyButtons dispatch={dispatch} />
       <GenreButtons dispatch={dispatch} />
-      <button className="start_button" onClick={handleVisibility}>
+      <button className="start-button" onClick={handleVisibility}>
         Start Quiz
       </button>
     </div>

@@ -1,15 +1,23 @@
+import './index.css';
 function DifficultyButtons({ dispatch }) {
   return (
-    <div>
-      <button onClick={() => dispatch({ type: 'DIFFICULTY', payload: 'easy' })}>
+    <div className="difficulty-buttons">
+      <button
+        id="easy-button"
+        onClick={() => dispatch({ type: 'DIFFICULTY', payload: 'easy' })}
+      >
         Easy
       </button>
       <button
+        id="medium-button"
         onClick={() => dispatch({ type: 'DIFFICULTY', payload: 'medium' })}
       >
         Medium
       </button>
-      <button onClick={() => dispatch({ type: 'DIFFICULTY', payload: 'hard' })}>
+      <button
+        id="hard-button"
+        onClick={() => dispatch({ type: 'DIFFICULTY', payload: 'hard' })}
+      >
         Hard
       </button>
     </div>

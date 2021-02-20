@@ -1,3 +1,5 @@
+import './index.css';
+
 const genres = [
   ['General Knowledge', 9],
   ['Animals', 27],
@@ -13,7 +15,7 @@ const genres = [
 
 function GenreButtons({ dispatch }) {
   return (
-    <div className="genre_buttons">
+    <div className="genre-buttons">
       {genres.map((genre) => (
         <button onClick={() => dispatch({ type: 'GENRE', payload: genre[1] })}>
           {genre[0]}

@@ -1,0 +1,8 @@
+#display_question p {
+  font-family: 'Roboto Mono';
+  font-size: 1.5rem;
+}
+
+#display_question {
+  margin: 0 20%;
+}

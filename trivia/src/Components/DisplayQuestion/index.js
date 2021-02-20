@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './index.css';
 import useFetch from '../Hooks/useFetch';
 import DisplayAnswers from '../DisplayAnswers';
 
@@ -21,7 +22,10 @@ function DisplayQuestion({ state, dispatch, isNotVisible, handleVisibility }) {
   }
 
   return (
-    <div className={isNotVisible ? 'invisible' : 'visible'}>
+    <div
+      id="display_question"
+      className={isNotVisible ? 'invisible' : 'visible'}
+    >
       <p>{`${qNum + 1}. ${questions[qNum].question}`}</p>
       <DisplayAnswers
         state={state}
