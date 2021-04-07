@@ -28,7 +28,7 @@ function DisplayQuestion({ state, dispatch, isNotVisible, toggleVisibility }) {
     >
       {questionIndex < 10 ? (
         <>
-          <p>{`${questionIndex + 1}. ${questions[questionIndex].question}`}</p>(
+          <p>{`${questionIndex + 1}. ${questions[questionIndex].question}`}</p>
           <DisplayAnswers
             dispatch={dispatch}
             correctAnswer={questions[questionIndex].correct_answer}
