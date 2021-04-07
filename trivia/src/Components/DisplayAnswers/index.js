@@ -1,3 +1,5 @@
+import Button from '../Button';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import './index.css';
 
@@ -11,7 +13,7 @@ function DisplayAnswers({
 
   useEffect(() => {
     //generate random number 0-3
-    let randomNum = Math.floor(Math.random() * 3);
+    const randomNum = Math.floor(Math.random() * 3);
     //insert it at this random index
     setAnswers([
       ...incorrectAnswers.slice(0, randomNum),
@@ -42,17 +44,16 @@ function DisplayAnswers({
 
   return (
     <div className="answer-buttons">
-      {/* map buttons hand in updateScore*/}
       {answers.map((answer) => (
-        <button
+        <Button
           className={'neutral'}
           disabled={isClicked}
-          onClick={(e) => {
-            updateScore(e.target, answer);
+          onClick={({ target }) => {
+            updateScore(target, answer);
           }}
         >
           {answer}
-        </button>
+        </Button>
       ))}
     </div>
   );

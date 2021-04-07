@@ -1,9 +1,10 @@
-import WelcomeDisplay from '../WelcomePage';
+import WelcomePage from '../WelcomePage';
 import './index.css';
 import DisplayQuestion from '../DisplayQuestion';
 import { useReducer, useState } from 'react';
+import React from 'react';
 
-let initialState = {
+const initialState = {
   genre: '',
   difficulty: '',
   playerName: 'Guest',
@@ -26,6 +27,8 @@ function reducer(state, action) {
         action.payload *= 2;
       }
       return { ...state, score: state.score + action.payload };
+    case 'RESET':
+      return initialState;
     default:
       return state;
   }
@@ -35,7 +38,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [isWelcomePage, setIsWelcomePage] = useState(true);
 
-  function handleVisibility() {
+  function toggleVisibility() {
     setIsWelcomePage(!isWelcomePage);
   }
 
@@ -47,13 +50,12 @@ function App() {
         state={state}
         dispatch={dispatch}
         isNotVisible={isWelcomePage}
-        handleVisibility={handleVisibility}
+        toggleVisibility={toggleVisibility}
       />
-      <WelcomeDisplay
-        state={state}
+      <WelcomePage
         dispatch={dispatch}
         isVisible={isWelcomePage}
-        handleVisibility={handleVisibility}
+        handleVisibility={toggleVisibility}
       />
     </div>
   );

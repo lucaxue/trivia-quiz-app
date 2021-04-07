@@ -1,8 +1,12 @@
+import React from 'react';
+import './index.css';
 
-// props to receive  
-    // Text (answer/Difficulty/Genre)
-    // function
+function Button({ children, ...props }) {
+  return (
+    <button className="button" {...props}>
+      {children}
+    </button>
+  );
+}
 
-// Return 
-
-{/* <button onClick={function}>{text}</button> */}
+export default Button;

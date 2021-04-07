@@ -1,3 +1,5 @@
+import Button from '../Button';
+import React from 'react';
 import './index.css';
 
 const genres = [
@@ -17,9 +19,9 @@ function GenreButtons({ dispatch }) {
   return (
     <div className="genre-buttons">
       {genres.map((genre) => (
-        <button onClick={() => dispatch({ type: 'GENRE', payload: genre[1] })}>
+        <Button onClick={() => dispatch({ type: 'GENRE', payload: genre[1] })}>
           {genre[0]}
-        </button>
+        </Button>
       ))}
     </div>
   );

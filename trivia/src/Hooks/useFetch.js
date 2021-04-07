@@ -1,9 +1,6 @@
 import { useEffect, useReducer } from 'react';
 
 function useFetch(url, dependency) {
-  //reducer, takes state and action
-  //accept GET_QUESTIONS only
-  //payload is the data
   function reducer(state, action) {
     switch (action.type) {
       case 'GET_DATA':
@@ -13,12 +10,13 @@ function useFetch(url, dependency) {
     }
   }
 
-  const [data, dispatch] = useReducer(reducer, null);
+  const [data, dispatch] = useReducer(reducer, { results: null });
 
   useEffect(() => {
     async function getData() {
-      let res = await fetch(url);
-      let data = await res.json();
+      const res = await fetch(url);
+      const data = await res.json();
+      // @ts-ignore
       dispatch({ type: 'GET_DATA', payload: data });
     }
     getData();
